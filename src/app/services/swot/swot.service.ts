@@ -24,7 +24,6 @@ export class SwotService {
 
   addSwot(swotAnalysis: Swot): Observable<any> {
 
-    console.log(swotAnalysis)
     return this.http.post<any>(`${environment.BASE_URL}swot/create`, swotAnalysis, this.httpOptions)
       .pipe(
         tap((newSwotAnalysis: Swot) => console.log(newSwotAnalysis)),
@@ -47,7 +46,6 @@ export class SwotService {
   }
 
   getItem(id: number): Observable<SwotItem> {
-    console.log(id);
     return this.http.post<SwotItem>(`${environment.BASE_URL}getSwotItem`, {id: id}, this.httpOptions)
       .pipe(
         catchError(this.handleError<SwotItem>('getTask'))
