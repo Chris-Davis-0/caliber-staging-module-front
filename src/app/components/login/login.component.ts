@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   async loginUser() {
     // Step 0: get login form information
     const manager = this.loginForm.value;
-    console.log(manager);
 
     // Step 1: set the auth service provider
     const provider = new firebase.auth.EmailAuthProvider();
@@ -42,11 +41,8 @@ export class LoginComponent implements OnInit {
           email: manager.email,
           firebaseCredentials: user
         };
-        console.log('Successful login! User signed in is: ', currentUser);
-        console.log(currentUser);
         // Step 4: After successful login, store user info in sessionStorage
         sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
-        console.log('Now going to homepage...');
         this.loginService.storeManagerIdFromServer(currentUser.email)
         this.sleep(500);
         // Step 5: Redirect user to home page

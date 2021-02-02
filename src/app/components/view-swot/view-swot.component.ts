@@ -45,7 +45,6 @@ export class ViewSwotComponent implements OnInit {
   delete(swotItemId : number){
     this.swotService.deleteItem(swotItemId)
       .subscribe((data:any)=>{
-        console.log(data);
         alert(`${data.message}`);
       })
     this.currentSwotAnalysis.analysisItems = this.currentSwotAnalysis.analysisItems.filter(swotItem => swotItem.id != swotItemId);
@@ -53,12 +52,9 @@ export class ViewSwotComponent implements OnInit {
 
   pullSwotData(){
     const associateId = +this.route.snapshot.paramMap.get('associateId')!.valueOf();
-    console.log(associateId)
     this.swotService.getSwotByAssociatedId(associateId)
 
     .subscribe((data:any)=>{
-      console.log(data);
-
       this.swotAnalyses = data;
       this.currentSwotAnalysis = this.swotAnalyses[this.activeSwotIndex]
     })

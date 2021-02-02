@@ -63,7 +63,6 @@ export class ViewAssociateComponent implements OnInit {
   open() {
     const modalRef = this.modalService.open(SwotComponent);
     modalRef.componentInstance.name = 'CreateSwot';
-    console.log(this.activeId);
     modalRef.componentInstance.passedId = this.activeId;
   }
 
@@ -71,10 +70,8 @@ export class ViewAssociateComponent implements OnInit {
     this.service.getAllAssociates(id)
     .subscribe(
       data => {
-        console.log(data);
         this.associates = data;
         this.changeDetect.detectChanges();
-        console.log(this.associates);
       }
       );
     this.associates = this.newAssociates;

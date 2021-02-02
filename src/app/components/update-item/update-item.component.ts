@@ -23,15 +23,11 @@ export class UpdateItemComponent implements OnInit {
               private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    console.log(this.passedSwotItem);
     this.swotItem = this.passedSwotItem;
   }
 
   
   onSubmit(itemForm: NgForm) {
-    console.log(itemForm)
-    console.log(itemForm.value)
-    console.log(this.swotItem)
     this.swotService.updateItem(this.swotItem)
       .subscribe(data => {
         console.log(data);
